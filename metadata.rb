@@ -6,7 +6,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.0"
 
 %w{ redhat }.each do |os|
-    supports os
+  supports os
 end
 
 %w(runit java yum).each { |cb| depends cb }

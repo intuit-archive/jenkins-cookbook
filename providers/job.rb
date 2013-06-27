@@ -52,6 +52,7 @@ def action_create
   unless job_exists
     jenkins_cli "create-job #{@new_resource.job_name} < #{@new_resource.config}"
   end
+  new_resource.updated_by_last_action(true)
 end
 
 #there is no cli update-job command
@@ -66,20 +67,16 @@ end
 
 def action_delete
   jenkins_cli "delete-job #{@new_resource.job_name}"
-  new_resource.updated_by_last_action(true)
 end
 
 def action_disable
   jenkins_cli "disable-job #{@new_resource.job_name}"
-  new_resource.updated_by_last_action(true)
 end
 
 def action_enable
   jenkins_cli "enable-job #{@new_resource.job_name}"
-  new_resource.updated_by_last_action(true)
 end
 
 def action_build
   jenkins_cli "build #{@new_resource.job_name}"
-  new_resource.updated_by_last_action(true)
 end

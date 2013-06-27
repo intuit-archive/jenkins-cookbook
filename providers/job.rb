@@ -61,20 +61,25 @@ def action_update
   else
     post_job(new_job_url)
   end
+  new_resource.updated_by_last_action(true)
 end
 
 def action_delete
   jenkins_cli "delete-job #{@new_resource.job_name}"
+  new_resource.updated_by_last_action(true)
 end
 
 def action_disable
   jenkins_cli "disable-job #{@new_resource.job_name}"
+  new_resource.updated_by_last_action(true)
 end
 
 def action_enable
   jenkins_cli "enable-job #{@new_resource.job_name}"
+  new_resource.updated_by_last_action(true)
 end
 
 def action_build
   jenkins_cli "build #{@new_resource.job_name}"
+  new_resource.updated_by_last_action(true)
 end

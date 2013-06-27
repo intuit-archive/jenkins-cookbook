@@ -50,4 +50,6 @@ def action_run
     cwd home
     block { |stdout| new_resource.block.call(stdout) } if new_resource.block
   end
+
+  new_resource.updated_by_last_action(true)
 end

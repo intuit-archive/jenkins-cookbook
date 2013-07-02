@@ -1,3 +1,4 @@
+name             "jenkins"
 maintainer       "Intuit, Inc."
 maintainer_email "brett_weaver@intuit.com"
 license          "Apache 2.0"

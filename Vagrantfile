@@ -3,11 +3,10 @@ Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
   
   # $ vagrant plugin install vagrant-omnibus
-  config.omnibus.chef_version = "10.16.2"
+  config.omnibus.chef_version = "11.4.4"
 
   config.vm.box      = 'opscode-centos-6.4'
   config.vm.box_url  = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box'
-  config.vm.hostname = 'cap-vagrant'
 
   # access jenkins at http://localhost:8081 on the host
   config.vm.network :forwarded_port, :guest => 8080, :host => 8081

@@ -10,4 +10,7 @@ version          "0.1.0"
   supports os
 end
 
-%w(runit java yum).each { |cb| depends cb }
+depends "runit"
+depends "java"
+depends "yum"
+depends "apache2"

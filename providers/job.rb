@@ -52,6 +52,7 @@ def action_create
   unless job_exists
     jenkins_cli "create-job #{@new_resource.job_name} < #{@new_resource.config}"
   end
+  new_resource.updated_by_last_action(true)
 end
 
 #there is no cli update-job command
@@ -61,6 +62,7 @@ def action_update
   else
     post_job(new_job_url)
   end
+  new_resource.updated_by_last_action(true)
 end
 
 def action_delete

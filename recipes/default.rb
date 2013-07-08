@@ -77,13 +77,13 @@ install_starts_service = false
 include_recipe 'yum'
 
 yum_key "jenkins" do
-  url "#{node.jenkins.package_url}/redhat/jenkins-ci.org.key"
+  url "#{node[:jenkins][:package_url]}/redhat/jenkins-ci.org.key"
   action :add
 end
 
 yum_repository "jenkins" do
   description "repository for jenkins"
-  url "#{node.jenkins.package_url}/redhat/"
+  url "#{node[:jenkins][:package_url]}/redhat/"
   key "jenkins"
   action :add
 end
@@ -116,12 +116,12 @@ ruby_block "block_until_operational" do
     until IO.popen("netstat -lnt").entries.select { |entry|
         entry.split[3] =~ /:#{node[:jenkins][:server][:port]}$/
       }.size == 1
-      Chef::Log.debug "service[jenkins] not listening on port #{node.jenkins.server.port}"
+      Chef::Log.debug "service[jenkins] not listening on port #{node[:jenkins][:server][:port]}"
       sleep 1
     end
 
     loop do
-      url = URI.parse("#{node.jenkins.server.url}/job/test/config.xml")
+      url = URI.parse("#{node[:jenkins][:server][:url]}/job/test/config.xml")
       res = Chef::REST::RESTRequest.new(:GET, url, nil).call
       break if res.kind_of?(Net::HTTPSuccess) or res.kind_of?(Net::HTTPNotFound)
       Chef::Log.debug "service[jenkins] not responding OK to GET / #{res.inspect}"
@@ -158,7 +158,8 @@ log "plugins updated, restarting jenkins" do
   only_if do
     if File.exists?(pid_file)
       htime = File.mtime(pid_file)
-      Dir["#{node[:jenkins][:server][:home]}/plugins/*.hpi"].select { |file|
+      dirname = "#{node[:jenkins][:server][:home]}/plugins/*.hpi"
+      Dir[dirname].select { |file|
         File.mtime(file) > htime
       }.size > 0
     end

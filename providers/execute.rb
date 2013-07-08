@@ -45,4 +45,6 @@ def action_run
     command_output << "JENKINS STDERR: #{stderr}"
     handle_command_failures(status, command_output, args)
   end
+
+  new_resource.updated_by_last_action(true)
 end

@@ -52,7 +52,6 @@ template "#{node[:apache][:dir]}/sites-available/jenkins" do
   variables(
     :host_name        => host_name,
     :host_aliases     => node[:jenkins][:http_proxy][:host_aliases],
-    :listen_ports     => node[:jenkins][:http_proxy][:listen_ports],
     :www_redirect     => www_redirect
   )
 

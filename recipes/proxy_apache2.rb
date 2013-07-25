@@ -32,7 +32,7 @@ else
   www_redirect = false
 end
 
-host_name = node[:fqdn] ||= 'localhost'
+host_name = node[:fqdn]
 
 template "#{node[:apache][:dir]}/htpasswd" do
   variables( :username => node[:jenkins][:http_proxy][:basic_auth_username],

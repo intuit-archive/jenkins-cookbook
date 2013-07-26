@@ -1,3 +1,4 @@
+name             "jenkins"
 maintainer       "Intuit, Inc."
 maintainer_email "brett_weaver@intuit.com"
 license          "Apache 2.0"
@@ -9,4 +10,7 @@ version          "0.1.0"
   supports os
 end
 
-%w(runit java yum).each { |cb| depends cb }
+depends "runit"
+depends "java"
+depends "yum"
+depends "apache2"

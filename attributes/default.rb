@@ -20,6 +20,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+default[:fqdn] = 'localhost' unless node[:fqdn]
 
 default[:jenkins][:mirror] = "http://mirrors.jenkins-ci.org"
 default[:jenkins][:package_url] = "http://pkg.jenkins-ci.org"
@@ -32,7 +33,7 @@ default[:jenkins][:server][:user] = "jenkins"
 default[:jenkins][:server][:group] = node[:jenkins][:server][:user]
 
 default[:jenkins][:server][:port] = 8080
-default[:jenkins][:server][:host] = node[:fqdn] ||= 'localhost'
+default[:jenkins][:server][:host] = node[:fqdn]
 default[:jenkins][:server][:url]  = "http://#{node[:jenkins][:server][:host]}:#{node[:jenkins][:server][:port]}"
 
 #download the latest version of plugins, bypassing update center

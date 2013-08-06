@@ -40,7 +40,7 @@ template "#{node[:apache][:dir]}/htpasswd" do
   owner node[:apache][:user]
   group node[:apache][:user]
   mode 0600
-  only_if node[:jenkins][:http_proxy][:basic_auth]
+  only_if { node[:jenkins][:http_proxy][:basic_auth] }
 end
 
 template "#{node[:apache][:dir]}/sites-available/jenkins" do

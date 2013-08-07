@@ -1,3 +1,6 @@
+# 0.1.2 (08/06/2013)
+
+* updated proxy_apache2.rb to comply with Chef 11 changes
 
 # 0.1.1 (07/28/2013)
 

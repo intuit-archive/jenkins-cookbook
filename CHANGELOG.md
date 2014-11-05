@@ -1,6 +1,7 @@
 # 0.1.3 (11/04/2014)
 
 * Added support for yum proxy
+* Changed deployment checker to use servers ip rather then hostname
 
 # 0.1.2 (08/06/2013)
 

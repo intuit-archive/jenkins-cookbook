@@ -84,6 +84,9 @@ end
 yum_repository "jenkins" do
   description "repository for jenkins"
   url "#{node[:jenkins][:package_url]}/redhat/"
+  proxy node[:jenkins][:yum][:proxy] 
+  proxy_username node[:jenkins][:yum][:proxy_username]
+  proxy_password node[:jenkins][:yum][:proxy_password]
   key "jenkins"
   action :add
 end

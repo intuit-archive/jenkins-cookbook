@@ -110,3 +110,9 @@ default[:jenkins][:http_proxy][:client_max_body_size] = "1024m"
 default[:jenkins][:http_proxy][:basic_auth]           = false
 default[:jenkins][:http_proxy][:basic_auth_username]  = "jenkins"
 default[:jenkins][:http_proxy][:basic_auth_password]  = "jenkins"
+
+# Yum proxy
+default[:jenkins][:yum][:proxy] = ''
+default[:jenkins][:yum][:proxy_username] = ''
+default[:jenkins][:yum][:proxy_password] = ''
+

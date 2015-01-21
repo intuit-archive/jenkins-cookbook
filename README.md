@@ -1,6 +1,8 @@
 Description
 ===========
 
+**!!! This project has been deprecated.  We recommend you search the [Chef Supermarket ](https://supermarket.chef.io/) for a supported alternative !!!**
+
 Installs and configures Jenkins CI server & node slaves.  Resource providers to support automation via jenkins-cli, including job create/update.
 
 Fork of (Heavy Water Jenkins cookbook)[https://github.com/heavywater/chef-jenkins].

@@ -12,5 +12,5 @@ end
 
 depends "runit"
 depends "java"
-depends "yum","=2.4.4"
+depends "yum","~> 3.7.1"
 depends "apache2"

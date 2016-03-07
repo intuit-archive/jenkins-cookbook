@@ -76,19 +76,11 @@ install_starts_service = false
 
 include_recipe 'yum'
 
-yum_key "jenkins" do
-  url "#{node[:jenkins][:package_url]}/redhat/jenkins-ci.org.key"
-  action :add
-end
-
 yum_repository "jenkins" do
   description "repository for jenkins"
-  url "#{node[:jenkins][:package_url]}/redhat/"
-  proxy node[:jenkins][:yum][:proxy] 
-  proxy_username node[:jenkins][:yum][:proxy_username]
-  proxy_password node[:jenkins][:yum][:proxy_password]
-  key "jenkins"
-  action :add
+  baseurl "#{node[:jenkins][:package_url]}/redhat/"
+  gpgkey "#{node[:jenkins][:package_url]}/redhat/jenkins-ci.org.key"
+  action :create
 end
 
 #"jenkins stop" may (likely) exit before the process is actually dead
